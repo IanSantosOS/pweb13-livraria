@@ -1,14 +1,14 @@
 {
-  "name": "pweb-livraria",
+  "name": "pweb13-livraria",
   "version": "1.0.0",
-  "description": "",
+  "description": "Atividade 13 da disciplina de PWEB",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "node --watch app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "IanSantosOS",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.9",

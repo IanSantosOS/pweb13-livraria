@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ let listaLivros = [
   { id: 8,  titulo: '1984',                                                         autor: 'George Orwell',            ano: '1984' },
   { id: 9,  titulo: 'Crepúsculo',                                                   autor: 'Stephenie Meyer',          ano: '2008' },
   { id: 10, titulo: 'A Culpa é das Estrelas',                                       autor: 'John Green',               ano: '2014' },
-  { id: 11, titulo: 'A Garota no Trem',                                             autor: '	Paula Hawkins',          ano: '2016' },
+  { id: 11, titulo: 'A Garota no Trem',                                             autor: 'Paula Hawkins',            ano: '2016' },
   { id: 12, titulo: 'O Silêncio dos Inocentes',                                     autor: 'Thomas Harris',            ano: '1991' },
   { id: 13, titulo: 'A Guerra dos Tronos',                                          autor: 'George R.R. Martin',       ano: '2011' },
   { id: 14, titulo: 'A Revolução dos Bichos',                                       autor: 'George Orwell',            ano: '1954' },
@@ -51,7 +51,7 @@ app.get('/buscar', (req, res) => {
   const livrosPesquisados = listaLivros.filter(livro => {
     const tituloLivro = livro.titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase();
     titulo = titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
-    return tituloLivro.includes(titulo)
+    return tituloLivro.includes(titulo);
   });
 
   res.render('index', { livros: livrosPesquisados});
