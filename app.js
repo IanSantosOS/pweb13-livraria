@@ -46,7 +46,7 @@ app.get('/', (_req, res) => {
 });
 
 app.get('/buscar', (req, res) => {
-  let { titulo } = req.query;
+  let titulo = req.query?.titulo || '';
 
   const livrosPesquisados = listaLivros.filter(livro => {
     const tituloLivro = livro.titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, '').toLowerCase();
