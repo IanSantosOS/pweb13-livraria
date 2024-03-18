@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/', formLoginValidacao, (req, res) => {
   req.session.username = req.body.username;
-  req.cookie('username', req.body.username);
+  res.cookie('username', req.body.username);
   res.status(204).json();
 });
 
