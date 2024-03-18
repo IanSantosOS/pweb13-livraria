@@ -16,7 +16,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-
 app.use('/', require('./routes/homepageRoute'));
 app.use('/login', require('./routes/loginRoute'));
 app.use('/logout', require('./routes/logoutRoute'));
