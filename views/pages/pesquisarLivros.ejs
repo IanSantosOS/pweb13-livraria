@@ -7,22 +7,51 @@
 </head>
 
 <body>
-  <div class="template-container">
-    <%- include('../partials/alert') %>
-  </div>
-
-  <div class="alert-container"></div>
-
   <%- include('../partials/navbar') %>
+
+  <div class="modal fade" id="atualizarLivroModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="atualizarLivroModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="atualizarLivroModalLabel">Atualizar Livro</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-atualizar-livro">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="id" autocomplete="off" readonly disabled>
+              <label for="titulo" class="form-label">ID</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="titulo" placeholder="Novo Titulo" autocomplete="off">
+              <label for="titulo" class="form-label">Atualizar Título</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="autor" placeholder="Novo Autor" autocomplete="off">
+              <label for="autor" class="form-label">Atualizar Autor</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="ano" placeholder="2024" autocomplete="off">
+              <label for="ano" class="form-label">Atualizar Ano</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" id="atualizar-livro-form-btn" class="btn btn-primary">Atualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="px-3 py-2">
     <form id="form-pesquisa">
-      <label for="titulo">Título:</label>
-      <input type="text" id="titulo" class="form-control" placeholder="Livro A" autocomplete="off">
+      <label for="tituloPesquisa">Título:</label>
+      <input type="text" id="tituloPesquisa" class="form-control" placeholder="Livro A" autocomplete="off">
       <input type="checkbox" class="form-check-input" name="pesquisa" value="titulo" checked>
 
-      <label for="ano">Ano:</label>
-      <input type="text" id="ano" class="form-control" placeholder="1983" autocomplete="off" disabled>
+      <label for="anoPesquisa">Ano:</label>
+      <input type="text" id="anoPesquisa" class="form-control" placeholder="1983" autocomplete="off" disabled>
       <input type="checkbox" class="form-check-input" name="pesquisa" value="ano">
       <button type="submit" class="btn btn-primary">Pesquisar</button>
       <a class="link" href="/livraria">
@@ -53,7 +82,9 @@
               <div class="table-data"><%= livro.autor %></div>
               <div class="table-data"><%= livro.ano %></div>
               <div class="table-data">
-                <button class="btn btn-success" onclick="atualizarLivro('<%= livro.id %>')">Atualizar</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#atualizarLivroModal" onclick="enviarModal('<%= livro.id %>', '<%= livro.titulo %>', '<%= livro.autor %>', '<%= livro.ano %>')">
+                  Atualizar
+                </button>
                 <button class="btn btn-danger" onclick="removerLivro('<%= livro.id %>')">Remover</button>
               </div>
             </div>

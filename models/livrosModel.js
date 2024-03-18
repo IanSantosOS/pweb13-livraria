@@ -21,14 +21,19 @@ class Livro {
     Livro._lista.splice(id, 1);
   }
 
-  static atualizarLivro(mudanca) {
-    const livro = Livro._lista.find(livro => livro.id = mudanca.id);
+  static atualizarLivro(livroAtualizado) {
+    const livro = Livro._lista.find(livro => livro.id === livroAtualizado.id);
 
     if (!livro) return;
 
-    for (const prop in mudanca) {
-      if (prop === 'id') continue;
-      livro[prop] = mudanca[prop];
+    if (livroAtualizado?.titulo) {
+      livro.titulo = livroAtualizado.titulo;
+    }
+    if (livroAtualizado?.autor) {
+      livro.autor = livroAtualizado.autor;
+    }
+    if (livroAtualizado?.ano) {
+      livro.ano = livroAtualizado.ano;
     }
   }
 }

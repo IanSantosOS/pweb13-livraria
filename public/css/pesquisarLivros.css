@@ -19,7 +19,7 @@ div.table-div {
 
 div.table-row {
   display: grid;
-  grid-template-columns: auto repeat(4, 1fr);
+  grid-template-columns: 3em repeat(4, 1fr);
 }
 
 div.table-head>div.table-row {
@@ -32,6 +32,9 @@ div.table-row:nth-child(even) {
 }
 
 div.table-data {
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid #9f9f9f;
   padding: .5em 1em;
+  gap: 1em;
 }

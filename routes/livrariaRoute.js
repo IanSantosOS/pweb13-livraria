@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const Livro = require('../models/livrosModel');
 
 const { verificarUsuarioLogado } = require('../middlewares/loginAuth');
+const livrosController = require('../controllers/livrosController');
+const Livro = require('../models/livrosModel');
 
 router.use('/', verificarUsuarioLogado);
 
 router.get('/', (_req, res) => {
   res.render('pesquisarLivros', { livros: Livro.getAll() });
+});
+
+router.get('/buscar/:ano', (req, res) => {
+  const { ano } = req.params;
+  const livrosPesquisados = Livro.getAll().filter(livro => livro.ano == ano.trim());
+  res.render('pesquisarLivros', { livros: livrosPesquisados });
 });
 
 router.get('/buscar', (req, res) => {
@@ -22,10 +29,8 @@ router.get('/buscar', (req, res) => {
   res.render('pesquisarLivros', { livros: livrosPesquisados });
 });
 
-router.get('/buscar/:ano', (req, res) => {
-  const { ano } = req.params;
-  const livrosPesquisados = Livro.getAll().filter(livro => livro.ano == ano.trim());
-  res.render('pesquisarLivros', { livros: livrosPesquisados });
-});
+router.delete('/remover/:idLivro', livrosController.removerLivro);
+
+router.post('/atualizar', livrosController.atualizarLivro);
 
 module.exports = router;
