@@ -48,13 +48,3 @@ Vocẽ deve verificar as credenciais do usuário e depois criar um cookie e asso
 #### Logout
 
 Criar um logout que leve o usuário para a página de login e apague o cookie criado.
-
-## O que falta implementar?
-
-arrumar os middlewares, controllers e caso necessário os models
-
-cadastro de usuários
-
-cadastro de livros
-
-(se der tempo listagem de usuários para adm)
