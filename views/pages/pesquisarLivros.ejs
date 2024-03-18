@@ -3,7 +3,7 @@
 <head>
   <%- include('../partials/head') %>
   <link rel="stylesheet" href="/css/pesquisarLivros.css">
-  <title>Pesquisa de Livro</title>
+  <title>Livros Disponíveis | Livraria</title>
 </head>
 
 <body>
@@ -45,7 +45,8 @@
   </div>
 
   <main class="px-3 py-2">
-    <form id="form-pesquisa">
+    <h2>Área de Pesquisa</h2>
+    <form id="form-pesquisa" class="mt-4">
       <label for="tituloPesquisa">Título:</label>
       <input type="text" id="tituloPesquisa" class="form-control" placeholder="Livro A" autocomplete="off">
       <input type="checkbox" class="form-check-input" name="pesquisa" value="titulo" checked>

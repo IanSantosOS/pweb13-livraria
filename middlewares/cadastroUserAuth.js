@@ -1,31 +1,31 @@
 const { usernameJaExistente } = require('../controllers/usersController');
 
 const formCadastroUserValidacao = ({ body }, res, next) => {
-  const message = {};
+  const messageError = {};
 
   if (!body?.username?.trim()) {
-    message.username = 'Nome de usuário é obrigatório e não pode ser vazio';
+    messageError.username = 'Nome de usuário é obrigatório e não pode ser vazio';
   }
   else if (validarUsername(body.username)) {
-    message.username = validarUsername(body.username);
+    messageError.username = validarUsername(body.username);
   }
 
-  if (!body?.pass?.trim()) {
-    message.pass = 'Senha é obrigatória e não pode ser vazia';
+  if (!body?.password?.trim()) {
+    messageError.password = 'Senha é obrigatória e não pode ser vazia';
   }
-  else if (validarPassword(body.pass)) {
-    message.pass = validarPassword(body.pass);
-  }
-
-  if (!body?.pass_confirm?.trim()) {
-    message.pass_confirm = 'Confirmação de senha é obrigatória e não pode ser vazia';
-  }
-  else if (body.pass !== body.pass_confirm) {
-    message.pass_confirm = 'As senhas não coincidem (não são as mesmas)';
+  else if (validarPassword(body.password)) {
+    messageError.password = validarPassword(body.password);
   }
 
-  if (Object.values(message).length !== 0) {
-    return res.status(400).json({ message });
+  if (!body?.password_confirm?.trim()) {
+    messageError.password_confirm = 'Confirmação de senha é obrigatória e não pode ser vazia';
+  }
+  else if (body.password !== body.password_confirm) {
+    messageError.password_confirm = 'As senhas não coincidem (não são as mesmas)';
+  }
+
+  if (Object.values(messageError).length !== 0) {
+    return res.status(400).json({ messageError });
   }
 
   next();

@@ -1,15 +1,22 @@
 body {
-  display: grid;
-  place-items: center;
-  background-color: #d0d0d0;
+  background-color: #d0d0d0 !important;
 }
 
 main {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  padding: 0 1.3em;
+  height: 100%;
   width: 100%;
-  max-width: 25em;
+  top: 0;
+  pointer-events: none;
 }
 
 main>div {
+  pointer-events: all;
+  width: 100%;
+  max-width: 25em;
   background-color: #efefef;
   border: 2px solid #95959b;
   box-shadow: 0 0 20px #414141;

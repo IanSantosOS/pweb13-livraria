@@ -2,19 +2,42 @@
 <html lang="pt-br">
 <head>
   <%- include('../partials/head') %>
-  <!-- <link rel="stylesheet" href="/css/.css"> -->
-  <title>| Livraria</title>
+  <link rel="stylesheet" href="/css/login_cadastro.css">
+  <title>Cadastrar Livro | Livraria</title>
 </head>
 
 <body>
   <div class="template-container">
-    <%- include('../partials/alert') %>
+    <%- include('../partials/alertSuccess') %>
   </div>
 
   <div class="alert-container"></div>
 
   <%- include('../partials/navbar') %>
 
-  <!-- <script src="/js/.js"></script> -->
+  <main>
+    <div class="px-3 pt-2 pb-4 rounded-4 text-center">
+      <h1>Cadastrar Livro</h1>
+      <form id="form-cadastro-livro">
+        <div class="form-floating mb-3">
+          <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Livro A" autocomplete="off">
+          <label for="titulo">Titulo do Livro</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" id="autor" name="autor" class="form-control" placeholder="João sem braço" autocomplete="off">
+          <label for="autor">Autor do Livro</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" id="ano" name="ano" class="form-control" placeholder="2019" autocomplete="off">
+          <label for="ano">Ano de Lançamento</label>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/cadastroLivros.js"></script>
 </body>
 </html>

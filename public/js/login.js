@@ -22,11 +22,11 @@ form.addEventListener('submit', (e) => {
     .then(res => res.json())
     .catch(err => err.message = "")
     .then(res => {
-      if (res?.message) {
+      if (res?.messageError) {
         if (alertContainer.children.length < 3) {
-          const newAlert = templateContainer.querySelector('.alert').cloneNode(true);
-          newAlert.querySelector('.alert-message').innerText = res.message;
-          alertContainer.appendChild(newAlert)
+          const newAlert = templateContainer.querySelector('.alert-danger').cloneNode(true);
+          newAlert.querySelector('.alert-message').innerText = res.messageError;
+          alertContainer.appendChild(newAlert);
         }
         password.value = "";
         username_email.focus();
@@ -35,4 +35,4 @@ form.addEventListener('submit', (e) => {
         window.location.replace('/homepage');
       }
     });
-})
+});

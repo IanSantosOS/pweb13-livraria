@@ -18,7 +18,8 @@ class Livro {
   }
 
   static removerLivro(id) {
-    Livro._lista.splice(id, 1);
+    const index = Livro._lista.findIndex(livro => livro.id === id);
+    Livro._lista.splice(index, 1);
   }
 
   static atualizarLivro(livroAtualizado) {
