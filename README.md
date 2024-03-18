@@ -53,8 +53,6 @@ Criar um logout que leve o usuário para a página de login e apague o cookie cr
 
 arrumar os middlewares, controllers e caso necessário os models
 
-botão de atualizar e remover livros funcionais
-
 cadastro de usuários
 
 cadastro de livros
