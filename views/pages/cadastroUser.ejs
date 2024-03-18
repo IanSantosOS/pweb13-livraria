@@ -3,18 +3,42 @@
 <head>
   <%- include('../partials/head') %>
   <link rel="stylesheet" href="/css/login_cadastro.css">
-  <title>| Livraria</title>
+  <title>Cadastrar Usuario | Livraria</title>
 </head>
 
 <body>
   <div class="template-container">
-    <%- include('../partials/alert') %>
+    <%- include('../partials/alertError') %>
+    <%- include('../partials/alertSuccess') %>
   </div>
 
   <div class="alert-container"></div>
 
   <%- include('../partials/navbar') %>
 
-  <!-- <script src="/js/.js"></script> -->
+  <main>
+    <div class="px-3 pt-2 pb-4 rounded-4 text-center">
+      <h1>Cadastrar Usuário</h1>
+      <form id="form-cadastro-user">
+        <div class="form-floating mb-3">
+          <input type="text" id="username" name="username" class="form-control" placeholder="Fulano" autocomplete="off">
+          <label for="username">Nome de Usuário</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" id="password" name="password" class="form-control" placeholder="senhaForte123!@#" autocomplete="off">
+          <label for="password">Senha</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" id="password_confirm" name="password_confirm" class="form-control" placeholder="senhaForte123!@#" autocomplete="off">
+          <label for="password_confirm">Confirmação de Senha</label>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/cadastroUser.js"></script>
 </body>
 </html>

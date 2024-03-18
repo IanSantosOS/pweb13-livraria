@@ -1,4 +1,4 @@
-const { usernameJaExistente } = require('../controllers/usersController');
+const { usernameJaExistente } = require('../models/usersModel');
 
 const formCadastroUserValidacao = ({ body }, res, next) => {
   const messageError = {};

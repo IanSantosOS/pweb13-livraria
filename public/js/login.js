@@ -23,13 +23,15 @@ form.addEventListener('submit', (e) => {
     .catch(err => err.message = "")
     .then(res => {
       if (res?.messageError) {
-        if (alertContainer.children.length < 3) {
-          const newAlert = templateContainer.querySelector('.alert-danger').cloneNode(true);
-          newAlert.querySelector('.alert-message').innerText = res.messageError;
-          alertContainer.appendChild(newAlert);
-        }
+        alertContainer.innerHTML = "";
+
+        const newAlert = templateContainer.querySelector('.alert-danger').cloneNode(true);
+        newAlert.querySelector('.alert-message').innerText = res.messageError;
+
+        alertContainer.appendChild(newAlert);
+
         password.value = "";
-        username_email.focus();
+        username.focus();
       }
       else {
         window.location.replace('/homepage');

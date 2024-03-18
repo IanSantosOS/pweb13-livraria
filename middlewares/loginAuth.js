@@ -2,11 +2,11 @@ const UsersModel = require('../models/usersModel');
 
 const formLoginValidacao = ({ body }, res, next) => {
   if (!body?.username?.trim() || !body?.password?.trim()) {
-    return res.status(400).json({ messageError: 'Insira um usuário e senha' });
+    return res.status(400).json({ messageError: 'Insira um usuário e senha!' });
   }
 
   if (!UsersModel.verificarUsuarioESenha(body.username, body.password)) {
-    return res.status(404).json({ messageError: 'Usuário não encontrado' });
+    return res.status(404).json({ messageError: 'Usuário ou senha inválidos!' });
   }
 
   next();
