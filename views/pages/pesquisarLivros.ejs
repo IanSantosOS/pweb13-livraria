@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head') %>
+  <link rel="stylesheet" href="/css/pesquisarLivros.css">
+  <title>Pesquisa de Livro</title>
+</head>
+
+<body>
+  <div class="template-container">
+    <%- include('../partials/alert') %>
+  </div>
+
+  <div class="alert-container"></div>
+
+  <%- include('../partials/navbar') %>
+
+  <main class="px-3 py-2">
+    <form id="form-pesquisa">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" class="form-control" placeholder="Livro A" autocomplete="off">
+      <input type="checkbox" class="form-check-input" name="pesquisa" value="titulo" checked>
+
+      <label for="ano">Ano:</label>
+      <input type="text" id="ano" class="form-control" placeholder="1983" autocomplete="off" disabled>
+      <input type="checkbox" class="form-check-input" name="pesquisa" value="ano">
+      <button type="submit" class="btn btn-primary">Pesquisar</button>
+      <a class="link" href="/livraria">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+        </svg>
+      </a>
+    </form>
+    <hr>
+
+    <% if (livros.length !== 0) {%>
+      <div class="table-div">
+        <div class="table-head">
+          <div class="table-row">
+            <div class="table-data">ID</div>
+            <div class="table-data">Titulo</div>
+            <div class="table-data">Autor</div>
+            <div class="table-data">Ano</div>
+            <div class="table-data">Ações</div>
+          </div>
+        </div>
+        <div class="table-body">
+          <% livros.forEach(livro => { %>
+            <div class="table-row">
+              <div class="table-data"><%= livro.id %></div>
+              <div class="table-data"><%= livro.titulo %></div>
+              <div class="table-data"><%= livro.autor %></div>
+              <div class="table-data"><%= livro.ano %></div>
+              <div class="table-data">
+                <button class="btn btn-success" onclick="atualizarLivro('<%= livro.id %>')">Atualizar</button>
+                <button class="btn btn-danger" onclick="removerLivro('<%= livro.id %>')">Remover</button>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    <% } else { %>
+      <p class="fs-3">Livro não encontrado</p>
+    <% } %>
+  </main>
+
+  <script src="/js/pesquisarLivros.js"></script>
+</body>
+</html>

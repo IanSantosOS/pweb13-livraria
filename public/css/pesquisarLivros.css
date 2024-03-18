@@ -1,0 +1,37 @@
+label {
+  text-align: end;
+}
+
+#form-pesquisa {
+  display: grid;
+  grid-template-columns: min-content 200px min-content;
+  gap: 1em;
+  align-items: center;
+}
+
+#form-pesquisa button {
+  grid-column: 1 / span 2;
+}
+
+div.table-div {
+  border-collapse: collapse;
+}
+
+div.table-row {
+  display: grid;
+  grid-template-columns: auto repeat(4, 1fr);
+}
+
+div.table-head>div.table-row {
+  background-color: #cfcfcf;
+  font-weight: bolder;
+}
+
+div.table-row:nth-child(even) {
+  background-color: #efefef;
+}
+
+div.table-data {
+  border-bottom: 1px solid #9f9f9f;
+  padding: .5em 1em;
+}

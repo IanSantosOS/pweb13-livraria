@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head') %>
+  <link rel="stylesheet" href="/css/login_cadastro.css">
+  <title>Login | Livraria</title>
+</head>
+
+<body>
+  <div class="template-container">
+    <%- include('../partials/alert') %>
+  </div>
+
+  <div class="alert-container"></div>
+
+  <main>
+    <div class="px-3 pt-2 pb-4 rounded-4 text-center">
+      <h1>Login</h1>
+      <form action="/login" method="post">
+        <div class="form-floating mb-3">
+          <input type="text" id="username" name="username" class="form-control" placeholder="user" autocomplete="off">
+          <label for="username">Nome de Usuário</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" id="password" name="password" class="form-control" placeholder="senhaForte123!@#" autocomplete="off">
+          <label for="password">Senha</label>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

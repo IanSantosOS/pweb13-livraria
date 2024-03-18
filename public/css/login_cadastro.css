@@ -1,0 +1,20 @@
+body {
+  display: grid;
+  place-items: center;
+  background-color: #d0d0d0;
+}
+
+main {
+  width: 100%;
+  max-width: 25em;
+}
+
+main>div {
+  background-color: #efefef;
+  border: 2px solid #95959b;
+  box-shadow: 0 0 20px #414141;
+}
+
+h1 {
+  margin: .5em 0 1em 0;
+}

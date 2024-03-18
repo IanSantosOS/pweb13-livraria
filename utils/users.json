@@ -1,0 +1,12 @@
+[
+  { "username": "user",      "password": "user"     },
+  { "username": "admin",     "password": "admin"    },
+  { "username": "leo",       "password": "123456"   },
+  { "username": "kenji",     "password": "987654"   },
+  { "username": "wladia",    "password": "1A2B3C"   },
+  { "username": "ricardo",   "password": "A1B2C3"   },
+  { "username": "ian",       "password": "senha123" },
+  { "username": "gabriel",   "password": "senha123" },
+  { "username": "guilherme", "password": "senha123" },
+  { "username": "mayara",    "password": "senha123" }
+]
