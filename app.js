@@ -22,7 +22,7 @@ app.use('/logout', require('./routes/logoutRoute'));
 app.use('/livraria', require('./routes/livrariaRoute'));
 app.use('/cadastro', require('./routes/cadastroRoute'));
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`\n\x1b[43;1m Funcionou!!! \x1b[0m Servidor está rodando na porta: ${PORT}\x1b[0m\n`);
 });
