@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     if (err) {
       res.status(500).send('Erro ao sair da conta!');
     } else {
-      req.clearCookie('username');
+      res.clearCookie('username');
       res.redirect('/login');
     }
   });
