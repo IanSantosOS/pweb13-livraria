@@ -1,5 +1,5 @@
 const form = document.querySelector('#form-pesquisa');
-const checkboxPesquisa = document.querySelectorAll('input[name=pesquisa]');
+const radioPesquisa = document.querySelectorAll('input[name=pesquisa]');
 
 const formAtualizarLivro = document.querySelector('#form-atualizar-livro');
 const btnAtualizarLivro = document.querySelector('#atualizar-livro-form-btn');
@@ -13,22 +13,18 @@ btnAtualizarLivro.addEventListener('click', () => {
   atualizarLivro();
 });
 
-checkboxPesquisa.forEach(checkboxBtn => {
-  checkboxBtn.addEventListener('click', () => {
-    if (checkboxBtn.value === 'titulo') {
-      if (!checkboxBtn.checked) return tituloPesquisa.disabled = true;
-      checkboxPesquisa[1].checked = false;
+radioPesquisa.forEach(radioBtn => {
+  radioBtn.addEventListener('change', () => {
+    if (radioPesquisa[0].checked) {
       tituloPesquisa.disabled = false;
       anoPesquisa.disabled = true;
     }
-    else if (checkboxBtn.value === 'ano') {
-      if (!checkboxBtn.checked) return anoPesquisa.disabled = true;
-      checkboxPesquisa[0].checked = false;
+    else {
       tituloPesquisa.disabled = true;
       anoPesquisa.disabled = false;
     }
   })
-})
+});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -51,7 +47,7 @@ function atualizarLivro() {
   if (!isNaN(ano.value)) atualizar.ano = ano.value;
 
   const options = {
-    method: 'POST',
+    method: 'PUT',
     body: JSON.stringify(atualizar),
     headers: {
       'Content-Type': 'application/json'
@@ -59,12 +55,12 @@ function atualizarLivro() {
   }
 
   fetch('/livraria/atualizar', options)
-    .then(res => window.location.reload());
+    .then(_res => window.location.reload());
 }
 
 function removerLivro(idLivro) {
   fetch(`/livraria/remover/${idLivro}`, { method: 'DELETE'})
-    .then(res => window.location.reload());
+    .then(_res => window.location.reload());
 }
 
 function enviarModal(idLivro, tituloLivro, autorLivro, anoLivro) {

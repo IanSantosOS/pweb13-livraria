@@ -35,6 +35,9 @@ form.addEventListener('submit', (e) => {
         const newAlert = templateContainer.querySelector('.alert-success').cloneNode(true);
         newAlert.querySelector('.alert-message').innerText = res.messageSuccess;
         alertContainer.appendChild(newAlert);
+        username.value = "";
+        password.value = "";
+        password_confirm.value = "";
       }
     });
 });
