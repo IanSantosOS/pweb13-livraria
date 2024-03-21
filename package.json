@@ -1,7 +1,7 @@
 {
   "name": "pweb13-livraria",
   "version": "1.0.0",
-  "description": "Atividade 13 da disciplina de PWEB",
+  "description": "Atividade 13 e 14 da disciplina de PWEB",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
