@@ -2,10 +2,11 @@
 
 Essa atividade tem duas partes, a livraria e o site de login
 
-- [Site Atual](https://pweb13-livraria.glitch.me)
+- [Site Atual](https://pweb-livraria.azurewebsites.net)
+- [Site Sem BCDD](https://pweb13-livraria.glitch.me)
 - [Site Antigo](https://pweb13-livraria-old.glitch.me)
 
-## Atividade 1
+## Atividade 13.1
 
 **Objetivo:** Implementar uma busca de livros.
 
@@ -13,7 +14,7 @@ Vamos criar um exemplo real que demonstre a comunicação cliente-servidor usand
 
 Queremos criar um endpoint onde os clientes possam pesquisar por livros. O cliente pode especificar critérios de pesquisa nos URL params ou query params.
 
-### 1.1 Requisitos
+### 13.1.1 Requisitos
 
 ✅ 1. Implemente um buscador de livros. O Sistema tem uma tela com dois campos de busca. A busca pelo título, busca pelo ano.
 
@@ -25,7 +26,7 @@ Queremos criar um endpoint onde os clientes possam pesquisar por livros. O clien
 
 ✅ 5. No caso de não retornar nenhum livro uma mensagem deve informar.
 
-### 1.2 Instruções
+### 13.1.2 Instruções
 
 ✅ 1. Crie uma aplicação Node.js com Express e EJS.
 
@@ -35,11 +36,11 @@ Queremos criar um endpoint onde os clientes possam pesquisar por livros. O clien
 
 ✅ 5. Caso o usuário faça a busca pelo ano, use URL param.
 
-## Atividade 2
+## Atividade 13.2
 
 **Objetivo:** Implementar a tela de Login
 
-### 2.1 Requisitos
+### 13.2.1 Requisitos
 
 #### Autenticação de Usuários
 
@@ -48,3 +49,15 @@ Vocẽ deve verificar as credenciais do usuário e depois criar um cookie e asso
 #### Logout
 
 Criar um logout que leve o usuário para a página de login e apague o cookie criado.
+
+## Atividade 14
+
+Altere a aplicação de gerenciamento de livros da Atividade 13, de forma que:
+
+🟦 1. Utilize Banco de Dados
+
+✅ 2. Fique uma arquitetura modularizada
+
+Disponibilize a aplicação de forma que a mesma possa ser acessada pela internet. Utilize o [Microsoft Azure](https://azure.microsoft.com/), [Glitch](https://glitch.com/), ou outro ambiente da sua escolha. Atenção para a configuração do banco de dados.
+
+> Obs. As aplicações devem ter as funcionalidades das atividades anteriores mais estes novos requisitos.
