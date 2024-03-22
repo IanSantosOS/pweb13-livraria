@@ -21,11 +21,4 @@ class Usuario {
   }
 }
 
-const users = require('../utils/users.json');
-
-users.forEach(user => {
-  const novoUsuario = new Usuario(user.username, user.password);
-  Usuario.cadastrarUsuario(novoUsuario);
-});
-
 module.exports = Usuario;

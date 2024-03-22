@@ -1,49 +1,35 @@
+const db = require('./dbConnection');
+
 class Livro {
   constructor(titulo, autor, ano) {
-    this.id = Livro._countId++;
     this.titulo = titulo;
     this.autor = autor;
     this.ano = ano;
   }
 
-  static _countId = 0;
-  static _lista = [];
-
-  static getAll() {
-    return Livro._lista;
+  cadastrarLivro() {
+    return db.execute('INSERT INTO livros (titulo, autor, ano) VALUES (?, ?, ?)', [this.titulo, this.autor, this.ano]);
   }
 
-  static cadastrarLivro(livro) {
-    Livro._lista.push(livro);
+  static getAll() {
+    return db.execute('SELECT * FROM livros');
   }
 
   static removerLivro(id) {
-    const index = Livro._lista.findIndex(livro => livro.id === id);
-    Livro._lista.splice(index, 1);
+    db.execute('DELETE FROM livros WHERE id = ?', [id]);
   }
 
-  static atualizarLivro(livroAtualizado) {
-    const livro = Livro._lista.find(livro => livro.id === livroAtualizado.id);
-
-    if (!livro) return;
-
-    if (livroAtualizado?.titulo) {
-      livro.titulo = livroAtualizado.titulo;
+  static atualizarLivro(atualizacao) {
+    if (atualizacao?.titulo) {
+      db.execute('UPDATE usuarios SET titulo = ? WHERE id = ?', [atualizacao.titulo, atualizacao.id]);
     }
-    if (livroAtualizado?.autor) {
-      livro.autor = livroAtualizado.autor;
+    if (atualizacao?.autor) {
+      db.execute('UPDATE usuarios SET autor = ? WHERE id = ?', [atualizacao.autor, atualizacao.id]);
     }
-    if (livroAtualizado?.ano) {
-      livro.ano = livroAtualizado.ano;
+    if (atualizacao?.ano) {
+      db.execute('UPDATE usuarios SET ano = ? WHERE id = ?', [atualizacao.ano, atualizacao.id]);
     }
   }
 }
-
-const books = require('../utils/books.json');
-
-books.forEach(book => {
-  const novoLivro = new Livro(book.titulo, book.autor, book.ano);
-  Livro.cadastrarLivro(novoLivro);
-});
 
 module.exports = Livro;

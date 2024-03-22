@@ -1,3 +1,6 @@
+require('dotenv').config({ path: './.env.database' });
+require('./models/dbConnection');
+
 const session = require('express-session');
 const express = require('express');
 const app = express();
@@ -10,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'livraria-aviaras',
+  secret: 'livraria-joao-e-cia',
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false }
