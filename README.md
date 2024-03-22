@@ -1,9 +1,9 @@
-# PWEB 13 - Livraria
+# PWEB 13/14 - Livraria
 
-Essa atividade tem duas partes, a livraria e o site de login
+2 atividades envolvendo um site contendo login, listagem, edição e remoção de elementos e conexão com o banco de dados MySQL
 
-- [Site Atual](https://pweb-livraria.azurewebsites.net)
-- [Site Sem BCDD](https://pweb13-livraria.glitch.me)
+- [Site Atual](https://pweb14-livraria.glitch.me)
+- [Site Sem BCDD](https://pweb13-livraria-sem-bcdd.glitch.me)
 - [Site Antigo](https://pweb13-livraria-old.glitch.me)
 
 ## Atividade 13.1
