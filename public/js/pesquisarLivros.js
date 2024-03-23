@@ -63,7 +63,7 @@ function removerLivro(idLivro) {
     .then(_res => window.location.reload());
 }
 
-function enviarModal(idLivro, tituloLivro, autorLivro, anoLivro) {
+function enviarDadosAoModal(idLivro, tituloLivro, autorLivro, anoLivro) {
   id.value = idLivro;
   titulo.value = tituloLivro;
   autor.value = autorLivro;
