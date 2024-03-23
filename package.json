@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Atividade 13 e 14 da disciplina de PWEB",
   "main": "app.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node app.js",
     "dev": "node --watch app.js"
