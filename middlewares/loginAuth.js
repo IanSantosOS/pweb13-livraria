@@ -5,7 +5,9 @@ const formLoginValidacao = async ({ body }, res, next) => {
     return res.status(400).json({ messageError: 'Insira um usuário e senha!' });
   }
 
-  if (! await UsersModel.verificarUsuarioESenha(body.username, body.password)) {
+  const loginVerificado = await UsersModel.verificarUsuarioESenha(body.username, body.password);
+
+  if (!loginVerificado) {
     return res.status(404).json({ messageError: 'Usuário ou senha inválidos!' });
   }
 
