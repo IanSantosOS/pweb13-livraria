@@ -54,7 +54,7 @@ Criar um logout que leve o usuário para a página de login e apague o cookie cr
 
 Altere a aplicação de gerenciamento de livros da Atividade 13, de forma que:
 
-🟦 1. Utilize Banco de Dados
+✅ 1. Utilize Banco de Dados
 
 ✅ 2. Fique uma arquitetura modularizada
 
