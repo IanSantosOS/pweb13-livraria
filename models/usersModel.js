@@ -1,23 +1,24 @@
+const db = require('./dbConnection');
+
 class Usuario {
   constructor(username, password) {
     this.username = username;
     this.password = password;
   }
 
-  static _contas = [];
-
-  static usernameJaExistente(username) {
-    return Usuario._contas.find(user => user.username.toLowerCase() === username.toLowerCase());
+  async cadastrarUsuario() {
+    return await db.execute('INSERT INTO usuarios VALUES (?, ?)', [this.username, this.password]);
   }
 
-  static cadastrarUsuario(novoUsuario) {
-    Usuario._contas.push(novoUsuario);
+  static async usernameJaExistente(queryUsername) {
+    const [ rows ] = await db.execute('SELECT username FROM usuarios WHERE LOWER(username) = LOWER(?)', [queryUsername]);
+    if (rows.length > 0) return true;
+    return false;
   }
 
-  static verificarUsuarioESenha(username, password) {
-    return Usuario._contas.find(conta => {
-      return conta.password === password && conta.username.toLowerCase() === username.toLowerCase();
-    });
+  static async verificarUsuarioESenha(username, password) {
+    const [ rows ] = await db.execute('SELECT username FROM usuarios WHERE LOWER(username) = LOWER(?) AND password = ?', [username, password]);
+    return rows[0];
   }
 }
 

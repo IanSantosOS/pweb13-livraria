@@ -6,8 +6,8 @@ const livrosController = require('../controllers/livrosController');
 
 router.use('/', verificarUsuarioLogado);
 
-router.get('/', (_req, res) => {
-  res.render('pesquisarLivros', { livros: livrosController.getAll() });
+router.get('/', (req, res) => {
+  res.redirect(req.baseUrl + '/buscar');
 });
 
 router.get('/buscar/:ano', livrosController.pesquisarAno);

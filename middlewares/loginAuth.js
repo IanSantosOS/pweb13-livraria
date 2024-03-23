@@ -1,11 +1,11 @@
 const UsersModel = require('../models/usersModel');
 
-const formLoginValidacao = ({ body }, res, next) => {
+const formLoginValidacao = async ({ body }, res, next) => {
   if (!body?.username?.trim() || !body?.password?.trim()) {
     return res.status(400).json({ messageError: 'Insira um usuário e senha!' });
   }
 
-  if (!UsersModel.verificarUsuarioESenha(body.username, body.password)) {
+  if (! await UsersModel.verificarUsuarioESenha(body.username, body.password)) {
     return res.status(404).json({ messageError: 'Usuário ou senha inválidos!' });
   }
 

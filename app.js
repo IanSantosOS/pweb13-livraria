@@ -1,6 +1,3 @@
-require('dotenv').config({ path: './.env.database' });
-require('./models/dbConnection');
-
 const session = require('express-session');
 const express = require('express');
 const app = express();

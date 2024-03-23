@@ -7,27 +7,28 @@ class Livro {
     this.ano = ano;
   }
 
-  cadastrarLivro() {
-    return db.execute('INSERT INTO livros (titulo, autor, ano) VALUES (?, ?, ?)', [this.titulo, this.autor, this.ano]);
+  async cadastrarLivro() {
+    return await db.execute('INSERT INTO livros (titulo, autor, ano) VALUES (?, ?, ?)', [this.titulo, this.autor, this.ano]);
   }
 
-  static getAll() {
-    return db.execute('SELECT * FROM livros');
+  static async getAll() {
+    const [ rows ] = await db.execute('SELECT * FROM livros');
+    return rows;
   }
 
-  static removerLivro(id) {
-    db.execute('DELETE FROM livros WHERE id = ?', [id]);
+  static async removerLivro(id) {
+    return await db.execute('DELETE FROM livros WHERE id = ?', [id]);
   }
 
-  static atualizarLivro(atualizacao) {
+  static async atualizarLivro(atualizacao) {
     if (atualizacao?.titulo) {
-      db.execute('UPDATE usuarios SET titulo = ? WHERE id = ?', [atualizacao.titulo, atualizacao.id]);
+      await db.execute('UPDATE livros SET titulo = ? WHERE id = ?', [atualizacao.titulo, atualizacao.id]);
     }
     if (atualizacao?.autor) {
-      db.execute('UPDATE usuarios SET autor = ? WHERE id = ?', [atualizacao.autor, atualizacao.id]);
+      await db.execute('UPDATE livros SET autor = ? WHERE id = ?', [atualizacao.autor, atualizacao.id]);
     }
     if (atualizacao?.ano) {
-      db.execute('UPDATE usuarios SET ano = ? WHERE id = ?', [atualizacao.ano, atualizacao.id]);
+      await db.execute('UPDATE livros SET ano = ? WHERE id = ?', [atualizacao.ano, atualizacao.id]);
     }
   }
 }

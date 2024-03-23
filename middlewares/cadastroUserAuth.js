@@ -1,20 +1,29 @@
-const { usernameJaExistente } = require('../models/usersModel');
+const UserModel = require('../models/usersModel');
 
-const formCadastroUserValidacao = ({ body }, res, next) => {
+const formCadastroUserValidacao = async ({ body }, res, next) => {
   const messageError = {};
 
   if (!body?.username?.trim()) {
     messageError.username = 'Nome de usuário é obrigatório e não pode ser vazio';
   }
-  else if (validarUsername(body.username)) {
-    messageError.username = validarUsername(body.username);
+  else if (await UserModel.usernameJaExistente(body.username)) {
+    messageError.username = 'Nome de usuário já existe';
+  }
+  else if (body.username.trim().replace(/ +/g, '') !== body.username) {
+    messageError.username = 'Nome de usuário não deve conter espaços';
+  }
+  else if (body.username.includes('@') || body.username.includes('?') || body.username.includes('!')) {
+    messageError.username = 'Nome de usuário não deve conter @, ? ou !';
+  }
+  else if (body.username !== body.username.normalize("NFD").replace(/[\u0300-\u036f]/g, '')) {
+    messageError.username = 'Nome de usuário não deve conter pontuação (á, ã, ü, etc)';
   }
 
   if (!body?.password?.trim()) {
     messageError.password = 'Senha é obrigatória e não pode ser vazia';
   }
-  else if (validarPassword(body.password)) {
-    messageError.password = validarPassword(body.password);
+  else if (body.password.length < 4) {
+    messageError.password = 'A senha tem que ter no mínimo 4 dígitos.';
   }
 
   if (!body?.password_confirm?.trim()) {
@@ -29,30 +38,6 @@ const formCadastroUserValidacao = ({ body }, res, next) => {
   }
 
   next();
-};
-
-const validarUsername = (username) => {
-  if (usernameJaExistente(username)) {
-    return 'Nome de usuário já existe';
-  }
-
-  if (username.trim().replace(/ +/g, '') !== username) {
-    return 'Nome de usuário não deve conter espaços';
-  }
-
-  if (username.includes('@') || username.includes('?') || username.includes('!')) {
-    return 'Nome de usuário não deve conter @, ? ou !';
-  }
-
-  if (username !== username.normalize("NFD").replace(/[\u0300-\u036f]/g, '')) {
-    return 'Nome de usuário não deve conter pontuação (á, ã, ü, etc)';
-  }
-};
-
-const validarPassword = (pass) => {
-  if (pass.length < 4) {
-    return 'A senha tem que ter no mínimo 4 dígitos.';
-  }
 };
 
 module.exports = formCadastroUserValidacao;
